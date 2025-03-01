@@ -12,7 +12,7 @@
 ### Run Mamba with different scenarios
 To run the WikiText-103 experiments, run:
 
-'''
+```
 cd mamba_wt103
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_pos  # for positive-eigenvalues scenario
@@ -20,7 +20,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_pos  # for p
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_neg  # for negative-eigenvalues scenario
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_real  # for mixed-eigenvalue scenario
-'''
+```
 
 ## Image Classification Experiments
 
@@ -31,10 +31,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_real  # for 
 
 ### Run MambaVision + Reordering tokens
 
-'''
+```
 cd mambavision
 bash train.sh
-'''
+```
 
 ## Citation
 If you find this code useful in your research, please cite us as:

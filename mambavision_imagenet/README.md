@@ -8,7 +8,7 @@
 
 ### Run MambaVision + Reordering tokens
 
-'''
+```
 cd mambavision
 bash train.sh
-'''
+```

@@ -9,8 +9,8 @@
 
 ### Exeriments
 To run the WikiText-103 experiments, run:
-'''
+```
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_pos  # for positive-eigenvalues scenario
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_neg  # for negative-eigenvalues scenario
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_real  # for mixed-eigenvalue scenario
-'''
+```
