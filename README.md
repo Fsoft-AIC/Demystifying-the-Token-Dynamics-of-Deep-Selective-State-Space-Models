@@ -1,6 +1,6 @@
 # Code for Demystifying the Token Dynamics of Deep Selective State Space Models (ICLR 2025)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC--BY--NC--SA--4.0-lightgrey)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Conference](https://img.shields.io/badge/ICLR-2025-blue)](https://iclr.cc/Conferences/2025)
 [![Paper](https://img.shields.io/badge/Paper-OpenReview-red)](https://openreview.net/forum?id=qtTIP5Gjc5)
 
