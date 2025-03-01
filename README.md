@@ -32,7 +32,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m train experiment=wt103/mamba_real  # for 
 ### Run MambaVision + Reordering tokens
 
 ```
-cd mambavision
+cd mambavision_imagenet/mambavision
 bash train.sh
 ```
 
