@@ -42,7 +42,7 @@ bash train.sh
 If you find this code useful in your research, please cite us as:
 
 ```
-@misc{vo2024demystifyingtokendynamicsdeep,
+@misc{vo2025demystifyingtokendynamicsdeep,
       title={Demystifying the Token Dynamics of Deep Selective State Space Models}, 
       author={Thieu N Vo and Duy-Tung Pham and Xin T. Tong and Tan Minh Nguyen},
       booktitle={International Conference on Learning Representations},
@@ -50,3 +50,6 @@ If you find this code useful in your research, please cite us as:
       url={https://openreview.net/forum?id=qtTIP5Gjc5}, 
 }
 ```
+
+## Acknowledgement
+This repo is adapted from [safari](https://github.com/HazyResearch/safari) and [MambaVision](https://github.com/NVlabs/MambaVision) repository.
