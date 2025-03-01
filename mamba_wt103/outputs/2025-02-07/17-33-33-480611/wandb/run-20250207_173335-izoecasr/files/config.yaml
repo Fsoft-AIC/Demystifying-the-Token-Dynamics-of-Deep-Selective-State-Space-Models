@@ -1,0 +1,178 @@
+_wandb:
+    value:
+        cli_version: 0.19.6
+        m:
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+        python_version: 3.10.16
+        t:
+            "1":
+                - 1
+                - 5
+                - 9
+                - 11
+                - 40
+                - 41
+                - 49
+                - 50
+                - 51
+                - 53
+                - 55
+            "2":
+                - 1
+                - 5
+                - 9
+                - 11
+                - 40
+                - 41
+                - 49
+                - 50
+                - 51
+                - 53
+                - 55
+            "3":
+                - 7
+                - 13
+                - 16
+                - 23
+                - 55
+                - 66
+            "4": 3.10.16
+            "5": 0.19.6
+            "6": 4.48.2
+            "8":
+                - 2
+                - 3
+                - 5
+            "12": 0.19.6
+            "13": windows-amd64
+callbacks:
+    value:
+        learning_rate_monitor:
+            logging_interval: step
+        model_checkpoint:
+            auto_insert_metric_name: false
+            dirpath: checkpoints/
+            filename: val/loss
+            mode: min
+            monitor: val/loss
+            save_last: true
+            save_top_k: 1
+            verbose: true
+        params:
+            fixed: true
+            total: true
+            trainable: true
+        timer:
+            epoch: true
+            inter_step: false
+            step: true
+            val: true
+dataset:
+    value:
+        _name_: wt103
+        add_eos: false
+        batch_size: 1
+        batch_size_eval: 2
+        cache_dir: dataset/wikitext-103-v1
+        dataset_config_name: wikitext-103-v1
+        dataset_name: wikitext
+        max_length: 1024
+        num_workers: 4
+        pin_memory: true
+        shuffle: true
+        tokenizer_name: gpt2
+decoder:
+    value: null
+encoder:
+    value: null
+loader:
+    value:
+        batch_size: 50
+        drop_last: true
+        num_workers: 0
+        pin_memory: true
+model:
+    value:
+        _name_: mamba_lm_pos
+        dropout: 0.25
+optimizer:
+    value:
+        _name_: adamw
+        betas:
+            "0": 0.9
+            "1": 0.999
+        lr: 0.0015
+        weight_decay: 0.25
+scheduler:
+    value:
+        _name_: cosine_warmup_timm
+        lr_min: 0.00015000000000000001
+        t_in_epochs: false
+        t_initial: 22500
+        warmup_lr_init: 1e-06
+        warmup_t: 225
+task:
+    value:
+        _name_: lm
+        loss: cross_entropy
+        torchmetrics:
+            "0": perplexity
+            "1": num_tokens
+tolerance:
+    value:
+        id: null
+        logdir: ./resume
+train:
+    value:
+        ckpt: null
+        debug: false
+        disable_dataset: false
+        ema: 0
+        global_batch_size: 128
+        gpu_mem: 4
+        ignore_warnings: false
+        interval: step
+        layer_decay:
+            _name_: null
+            decay: 0.7
+        mode: min
+        monitor: val/loss
+        post_init_hook:
+            _name_: null
+        pretrained_model_path: null
+        pretrained_model_state_hook:
+            _name_: null
+        pretrained_model_strict_load: true
+        seed: 42
+        state:
+            mode: null
+            n_context: 0
+            n_context_eval: 0
+        test: false
+        validate_at_start: false
+trainer:
+    value:
+        _target_: pytorch_lightning.Trainer
+        accelerator: gpu
+        accumulate_grad_batches: 128
+        devices: 1
+        gradient_clip_val: 1
+        limit_train_batches: 1
+        limit_val_batches: 1
+        log_every_n_steps: 10
+        max_epochs: 25
+        num_nodes: 1
+        precision: 16
+        strategy: null
+wandb:
+    value:
+        group: ""
+        id: null
+        job_type: training
+        mode: online
+        name: null
+        project: long-conv
+        save_dir: .

@@ -1,0 +1,7 @@
+# @package _global_
+defaults:
+  - /experiment/wt103/base_mamba.yaml
+
+model:
+  _name_: mamba_lm_real
+  dropout: 0.25

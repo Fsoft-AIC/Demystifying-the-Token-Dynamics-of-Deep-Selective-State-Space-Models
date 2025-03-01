@@ -1,0 +1,13 @@
+learning_rate_monitor:
+  logging_interval: ${train.interval}
+
+timer:
+  step: True
+  inter_step: False
+  epoch: True
+  val: True
+
+params:
+  total: True
+  trainable: True
+  fixed: True

@@ -1,0 +1,6 @@
+swa:
+  swa_epoch_start: 0.8
+  swa_lrs: ${train.optimizer.lr}
+  annealing_epochs: 5
+  annealing_strategy: 'cos'
+  avg_fn: null

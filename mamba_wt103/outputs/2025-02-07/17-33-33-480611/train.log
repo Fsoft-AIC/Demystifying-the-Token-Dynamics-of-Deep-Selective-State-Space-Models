@@ -1,0 +1,5 @@
+[2025-02-07 17:33:38,049][__main__][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2025-02-07 17:33:38,051][__main__][INFO] - Instantiating callback <src.callbacks.timer.Timer>
+[2025-02-07 17:33:38,059][__main__][INFO] - Instantiating callback <src.callbacks.params.ParamsLog>
+[2025-02-07 17:33:38,063][__main__][INFO] - Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2025-02-07 17:33:38,065][__main__][INFO] - Instantiating trainer <pytorch_lightning.Trainer>

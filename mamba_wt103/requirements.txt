@@ -1,0 +1,16 @@
+numpy==1.24
+scipy
+pandas
+scikit-learn
+matplotlib
+tqdm
+rich
+pytorch-lightning==1.8.6
+hydra-core
+omegaconf
+wandb
+einops
+opt_einsum
+transformers # For some schedulers
+timm
+datasets # LRA

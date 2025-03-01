@@ -1,0 +1,122 @@
+train:
+  seed: 42
+  interval: step
+  monitor: val/loss
+  mode: min
+  ema: 0.0
+  test: false
+  debug: false
+  ignore_warnings: false
+  state:
+    mode: null
+    n_context: 0
+    n_context_eval: ${.n_context}
+  ckpt: null
+  disable_dataset: false
+  validate_at_start: false
+  pretrained_model_path: null
+  pretrained_model_strict_load: true
+  pretrained_model_state_hook:
+    _name_: null
+  post_init_hook:
+    _name_: null
+  layer_decay:
+    _name_: null
+    decay: 0.7
+  gpu_mem: ${eval:"round(float(__import__('subprocess').check_output('nvidia-smi -i
+    0 --query-gpu=memory.total --format=csv,noheader,nounits', shell=True).strip().decode())
+    / 1000)"}
+  global_batch_size: 128
+tolerance:
+  logdir: ./resume
+  id: null
+wandb:
+  project: long-conv
+  group: ''
+  job_type: training
+  mode: online
+  name: null
+  save_dir: .
+  id: ${.name}
+trainer:
+  _target_: pytorch_lightning.Trainer
+  devices: 1
+  accelerator: gpu
+  accumulate_grad_batches: ${div_up:${train.global_batch_size}, ${eval:${trainer.devices}
+    * ${dataset.batch_size} * ${trainer.num_nodes}}}
+  max_epochs: 25
+  gradient_clip_val: 1.0
+  log_every_n_steps: 10
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  num_nodes: 1
+  precision: 16
+  strategy: null
+loader:
+  batch_size: 50
+  num_workers: 0
+  pin_memory: true
+  drop_last: true
+dataset:
+  _name_: wt103
+  dataset_name: wikitext
+  dataset_config_name: wikitext-103-v1
+  tokenizer_name: gpt2
+  cache_dir: dataset/wikitext-103-v1
+  max_length: 1024
+  add_eos: false
+  batch_size: 1
+  batch_size_eval: ${eval:${.batch_size} * 2}
+  num_workers: 4
+  shuffle: true
+  pin_memory: true
+  __train_len: ${div_up:117920140, ${.max_length}}
+  __l_max: ${.max_length}
+optimizer:
+  _name_: adamw
+  lr: 0.0015
+  weight_decay: 0.25
+  betas:
+  - 0.9
+  - 0.999
+scheduler:
+  _name_: cosine_warmup_timm
+  t_in_epochs: false
+  t_initial: ${eval:${div_up:${dataset.__train_len}, ${train.global_batch_size}} *
+    ${trainer.max_epochs}}
+  lr_min: ${eval:0.1 * ${optimizer.lr}}
+  warmup_lr_init: 1.0e-06
+  warmup_t: ${eval:${div_up:${dataset.__train_len}, ${train.global_batch_size}} *
+    ${trainer.max_epochs} * 0.01}
+callbacks:
+  learning_rate_monitor:
+    logging_interval: ${train.interval}
+  timer:
+    step: true
+    inter_step: false
+    epoch: true
+    val: true
+  params:
+    total: true
+    trainable: true
+    fixed: true
+  model_checkpoint:
+    monitor: ${train.monitor}
+    mode: ${train.mode}
+    save_top_k: 1
+    save_last: true
+    dirpath: checkpoints/
+    filename: ${train.monitor}
+    auto_insert_metric_name: false
+    verbose: true
+task:
+  _name_: lm
+  loss: cross_entropy
+  torchmetrics:
+  - perplexity
+  - num_tokens
+encoder: null
+decoder: null
+model:
+  _name_: mamba_lm_pos
+  dropout: 0.25

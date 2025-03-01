@@ -1,0 +1,5 @@
+_name_: mamba
+d_state: 64
+mode: diag
+measure: diag-lin
+lr: ${eval:"min(0.001, ${optimizer.lr})"}
